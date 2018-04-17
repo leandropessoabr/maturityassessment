@@ -1,0 +1,22 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'maturity/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'maturity/components.css' %}" />
+
+<table>
+    <thead>
+        <tr>Answer List</tr>
+        <tr><td>Dimension</td><td>Criteria</td><td>Description</td><td>Value</td></tr>
+    </thead>
+    <tbody>
+        {% for answer in assessment.assessmentanswer_set.all %}
+        <tr>
+            <td>{{ answer.criteria.dimension.dimension_name }}</td>
+            <td>{{ answer.get_criteria_name }}</td>
+            <td>{{ answer.criteria.criteria_description}}</td>
+            <td>
+                <div class="slidecontainer"><input type="range" min="1" max="5" value="1" class="slider" id="myRange"></div>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

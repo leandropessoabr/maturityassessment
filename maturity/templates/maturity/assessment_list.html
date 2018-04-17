@@ -1,0 +1,21 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'maturity/style.css' %}" />
+
+<table>
+    <thead>
+        <tr>Assessment List</tr>
+        <tr><td>e-mail</td><td>Nome</td><td>Data</td></tr>
+    </thead>
+    <tbody>
+        {% for assessment in assessment_list %}
+        <tr>
+            <td><a href="{% url 'maturity:answers' assessment.id %}">{{ assessment.user_email }}</a></td>
+            <td>{{ assessment.user_name }}</td>
+            <td>{{ assessment.assessment_date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+

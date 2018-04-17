@@ -1,0 +1,9 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'maturity/style.css' %}" />
+
+<h1>New Assessment</h1>
+
+<form action="{% url 'maturity:set_new_assessment_data' %}" method="post">{% csrf_token %}
+{{ form.as_p }}
+<input type="submit" value="Save" />
+</form>
