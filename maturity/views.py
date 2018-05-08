@@ -7,7 +7,7 @@ from django import forms
 from django.urls import reverse
 
 class MainPageView(generic.ListView):
-    template_name = 'maturity/index.html'
+    template_name = 'html5boilerplate/index.html'
     def get_queryset(self):
         return Dimension.objects.all()
 
@@ -16,32 +16,39 @@ class AssessmentListView(generic.ListView):
     def get_queryset(self):
         return Assessment.objects.all()
 
+class AnswerView(generic.DetailView):
+    model = Assessment
+    template_name = 'html5boilerplate/criteriaanswer.html'
+
 class AnswerListView(generic.DetailView):
     model = Assessment
     template_name = 'maturity/answer_list.html'
 
-class NewAssessmentForm(forms.Form):
-    name = forms.CharField(label='User Name', max_length=100)
-    email = forms.EmailField(label='User email', max_length=100)
-
-class NewAssessmentView(FormView):
-    template_name = "maturity/new_assessment.html"
-    form_class = NewAssessmentForm
-    sucess_url = 'maturity/assessment_list.html'
+class ResultsView(generic.DetailView):
+    model = Assessment
+    template_name = 'html5boilerplate/results.html'
 
 def set_new_assessment_data(request):
-    if request.method == 'POST':
-        form = NewAssessmentForm(request.POST)
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            email = form.cleaned_data['email']
-            print(name)
-            print(email)
-            Assessment.createAssessment(name, email)
-    else:
-        form = NameForm()
+    name = request.POST['name']
+    email = request.POST['email']
+    ass = Assessment.createAssessment(name, email)
+    return HttpResponseRedirect(reverse('maturity:answer', args=(ass.id,)))
 
-    return HttpResponseRedirect(reverse('maturity:assessments'))
+def set_answer(request, assessment_id):
+    ass = Assessment.objects.get(pk=assessment_id)
+    answer = int(request.POST['value'])
+    ass.set_current_answer(answer)
+    ass.save()
+    answer = ass.get_current_assessment_item() # gets next item
+    if answer == None:
+        return HttpResponseRedirect(reverse('maturity:results', args=(ass.id,)))
+    else:
+        return HttpResponseRedirect(reverse('maturity:answer', args=(ass.id,)))
+
+
+
+
+
 
 
 

@@ -1,0 +1,87 @@
+{% load static %}
+
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <!-- CSS -->
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
+        <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/prettyPhoto/css/prettyPhoto.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/font-awesome/css/font-awesome.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/social-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/ebook-style.css' %}">
+
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Header -->
+        <div class="container">
+            <div class="header row">
+                <div class="logo span4">
+                    <h2><a href="">Avaliação Digital</a></h2>
+                </div>
+                <div class="tel-skype span8">
+                    <p><a href="https://overdub.tech">overdub.tech</a><span class="pipe">|</span> <i class="icon-user"></i> <a href="mailto:contato@overdub.tech">contato@overdub.tech</a> </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                <div class="question-area">
+                    <div class="question">
+                        <h3>Dimensão: {{ assessment.get_current_assessment_item.get_dimension_name }}</h3>
+                        <h5>Critério: {{ assessment.get_current_assessment_item.get_criteria_name }}</h5>
+                        <p>{{ assessment.get_current_assessment_item.get_criteria_description }}</p>
+                        <form action="{% url 'maturity:set_answer' assessment.id %}" method="post" class="subscribe">{% csrf_token %}
+                            <input type="radio" name="value" value="1"> 1 |
+                            <input type="radio" name="value" value="2"> 2 |
+                            <input type="radio" name="value" value="3"> 3 |
+                            <input type="radio" name="value" value="4"> 4 |
+                            <input type="radio" name="value" value="5"> 5 <br>
+                            <p><button type="submit">Enviar</button></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <footer>
+            <div class="container">
+
+                <div class="row">
+                    <div class="span12 copyright">
+                        <p>Avaliação Digital: todos os diretos reservados à overdub.tech</p>
+                    </div>
+                </div> <!-- end row -->
+
+            </div>
+        </footer>
+
+
+        <script src="js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.2.1.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+
+    </body>
+</html>

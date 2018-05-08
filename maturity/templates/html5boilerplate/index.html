@@ -1,0 +1,162 @@
+{% load static %}
+
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="manifest" href="site.webmanifest">
+        <link rel="apple-touch-icon" href="icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+
+        <!-- CSS -->
+        <link rel='stylesheet' href='http://fonts.googleapis.com/css?family=PT+Sans:400,700'>
+        <link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/prettyPhoto/css/prettyPhoto.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/font-awesome/css/font-awesome.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/social-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/ebook-style.css' %}">
+
+    </head>
+    <body>
+        <!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+
+        <!-- Header -->
+        <div class="container">
+            <div class="header row">
+                <div class="logo span4">
+                    <h2><a href="">Avaliação Digital</a></h2>
+                </div>
+                <div class="tel-skype span8">
+                    <p><a href="https://overdub.tech">overdub.tech</a><span class="pipe">|</span> <i class="icon-user"></i> <a href="mailto:contato@overdub.tech">contato@overdub.tech</a> </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Product Showcase -->
+        <div class="product-showcase">
+            <div class="product-showcase-pattern">
+                <div class="container">
+                    <div class="row">
+                        <div class="span12 product-background">
+                            <div class="row">
+                                <div class="span5 product-image">
+                                    <img src="{% static 'assets/img/ebook.png' %}" alt="">
+                                </div>
+                                <div class="span7 product-title">
+                                    <h1>Avaliação Digital</h1>
+                                    <div class="product-description">
+                                        <p><strong>Você está preparado para a transformação digital?</strong></p>
+                                        <p>Avalie gratuitamente o grau de maturidade digital da sua empresa.</p>
+                                        <p>Receba um relatório com o resultado de sua avaliação, diagnóstico e recomendações inciais.</p>
+                                        <form action="{% url 'maturity:set_new_assessment_data' %}" method="post" class="subscribe">{% csrf_token %}
+                                            <input type="text" name="name" class="text" placeholder="Digite seu nome">
+                                            <input type="text" name="email" class="email" placeholder="Digite seu email">
+                                            <button type="submit">iniciar</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <!-- Os tres pilares da avaliação digital-->
+            <div class="row">
+                <div class="span12">
+                    <div class="features_2">
+                        <h3>Pilares da Avaliação Digital</h3>
+                        <div class="row">
+                            <div class="span4 single-feature features-left-span">
+                                <div class="feature-icon">
+                                    <i class="icon-fire"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Cultura Digital</h4>
+                                    <p>A cultura digital representa como sua empresa se organiza, qual a estratégia e
+                                        a postura da liderança em relação à transformação digital e quais os valores e
+                                        comportamentos de sua empresa que podem contribuir para a jornada digital.</p>
+                                </div>
+                            </div>
+                            <div class="span4 single-feature">
+                                <div class="feature-icon">
+                                    <i class="icon-cloud"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Ativos Digitais</h4>
+                                    <p>Os ativos digitais são todas as soluções tecnológicas utilizadas pela sua
+                                        organização com foco em geração de valor para o negócio.</p>
+                                </div>
+                            </div>
+                            <div class="span4 single-feature">
+                                <div class="feature-icon">
+                                    <i class="icon-twitter"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h4>Engajamento Social e Experiência do Cliente</h4>
+                                    <p>Como sua empresa se comunica e gera engajamento com o cliente e com a comunidade,
+                                        como a empresa trata a experiência e jornada do cliente.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- sobre a overdub-->
+            <div class="row">
+                <div class="span12">
+                    <div class="about-us_2">
+                        <h3>Sobre a Overdub</h3>
+                        <h5>Catalisar a transformação das empresas: este é o propósito da Overdub</h5>
+                        <p>A Overdub atua em iniciativas de inovação, estratégia de TI, transformação digital e
+                            cultura ágil. Somos o parceiro ideal para a jornada de transformação das empresas que
+                            buscam competitividade frente à concorrência digital.
+                            <a href="https://overdub.tech">Saiba mais.</a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <footer>
+            <div class="container">
+
+                <div class="row">
+                    <div class="span4 contact-us">
+                        <h3><a href="https://overdub.tech/sobre">Entre em contato conosco!</a></h3>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span12">
+                        <div class="social-links">
+                            <a class="facebook" href="https://www.facebook.com/overdub.tech/"></a>
+                            <a class="twitter" href="https://twitter.com/@overdubtech/"></a>
+                            <a class="email" href="mailto:contato@overdub.tech"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="span12 copyright">
+                        <p>Avaliação Digital: todos os diretos reservados à overdub.tech</p>
+                    </div>
+                </div> <!-- end row -->
+
+            </div>
+        </footer>
+    </body>
+</html>
